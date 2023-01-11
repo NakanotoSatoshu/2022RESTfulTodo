@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security	">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS読込 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/Chaos.css}">
+<link rel="stylesheet" th:href="@{/css/nice.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<script th:src="@{/js/detail.js}" defer></script>
+<title >Home</title>
+</head>
+<body class="bg-" style="background-image: url(">
+<div th:fragment="header_nav">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light animated McShadow ">
+        <span class="navbar-brand shadow-lg p-1 text-danger">TODOリスト</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active ">
+                    <a class="nav-link " th:href="@{/home}">作業一覧 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" th:href="@{/entry}">作業登録</a>
+                </li>
+                <li class="nav-item ">
+
+                 <!--   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+
+					 <a class="nav-link "  id="navbar" role="button"
+                        data-toggle="" aria-haspopup="true" aria-expanded="false" href="#" sec:authentication="name"></a>
+							<li sec:authorize="isAuthenticated()"></li>
+							<li class="nav-link">さんようこそ。</li>
+                <!--   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <!--     <div class="dropdown-divider"></div>
+                        <form class="dropdown-item" method="post" >-->
+
+            </ul>
+            現在日時
+            <div class="mr-2 shadow-lg p-1 mb-2  rounded border-bottom-0" th:text="${#calendars.format(#calendars.createNow(), 'yyyy年MM月dd日 ')}"></div>
+            <div th:text="${#temporals.dayOfWeekName(date)}"></div>
+           	<div class="mr-2"></div>
+            <div class="mr-2"><a class="btn btn-outline-dark my-2 my-sm-0 shadow-lg p-1" th:href="@{/logout}">ログアウト</a>
+                    </div>
+            <form class="form-inline my-2 my-lg-0" th:action="@{/search}" method="post">
+                <input class="form-control mr-sm-2 shadow-lg p-1" type="search" placeholder="Search" aria-label="Search" name="str"
+                    value="">
+                <button class="btn btn-outline-dark my-2 my-sm-0 shadow-lg p-1" type="submit">検索</button>
+            </form>
+        </div>
+    </nav>
+
+</div>
+</body>
+</html>

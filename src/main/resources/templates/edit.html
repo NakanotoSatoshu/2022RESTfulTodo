@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<!-- CSS読込 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" />
+<link rel="stylesheet" th:href="@{/css/Chaos.css}">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/nice.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<script th:src="@{/js/js.js}" defer></script>
+<meta charset="UTF-8">
+<title >編集画面</title>
+</head>
+<body class="bg-light" style="background-image: url(">
+ 	<!-- ナビゲーション -->
+	<div th:replace="header :: header_nav"></div>
+    <!-- ナビゲーション ここまで -->
+<div th:fragment="editTodoList_contents">
+<div class="container-fluid" >
+ <div class="row my-2">
+            <div class="col-sm-3"></div>
+            	<div class="col-md-3">
+					<div class="col-md animated  fadeIn">
+						<div class="page-header usu">
+							<h1>作業更新</h1>
+						</div>
+	<form method="post" th:action="@{/edit}" th:object="${todoItemsForm}">
+		<table class="table table-secondary table-striped table-hover table-md my-2">
+		<!-- 項目名の入力エリア -->
+		<tr class="thead-dark">
+			<th class="active co-sm-3 animated  fadeIn">項目名</th>
+			<td class="col-sm-6">
+				<!-- classappend エラー用CSSの追加 -->
+				<div class="form-group animated  fadeIn" th:classappend="${#fields.hasErrors('item_name')}?'has-error'">
+				<input type="hidden" class="form-control" th:field="*{id}"/>
+					<input type="text" class="form-control" th:field="*{item_name}" th:errorclass="is-invalid"/>
+					<!-- 個別エラーメッセージの表示 -->
+					<span class="text-danger" th:if="${#fields.hasErrors('item_name')}" th:errors="*{item_name}">itemName error</span>
+				</div>
+			</td>
+		</tr>
+		<!-- 担当者の入力エリア -->
+		<tr>
+			<th class="active animated  fadeIn">担当者</th>
+			<td>
+				<div class="form-group animated  fadeIn" th:classappend="${#fields.hasErrors('user_id')}?'has-error'">
+					<select th:field="*{user_id}" th:errorclass="is-invalid">
+						<option value="0">--------選択してください----------</option>
+						<option th:each="user : ${userList}" th:value="${user.Id}" th:text="${user.username}"></option>
+					</select>
+					<!-- 個別エラーメッセージの表示 -->
+					<span class="text-danger" th:if="${#fields.hasErrors('user_id')}" th:errors="*{user_id}">userId error</span>
+				</div>
+			</td>
+		</tr>
+		<!-- 期限の入力エリア -->
+		<tr>
+			<th class="active animated  fadeIn">期限</th>
+			<td>
+				<div class="form-group animated  fadeIn" th:classappend="${#fields.hasErrors('expire_date')}?'has-error'">
+					<input type="text" class="form-control" th:field="*{expire_date}" placeholder="2020/01/01" th:errorclass="is-invalid"/>
+					<!-- 個別エラーメッセージの表示 -->
+					<span class="text-danger" th:if="${#fields.hasErrors('expire_date')}" th:errors="*{expire_date}">expireDate error</span>
+				</div>
+			</td>
+		</tr>
+		<!-- 終了のチェックボックス -->
+		<tr>
+			<th class="active animated  fadeIn">終了</th>
+			<td class="animated  fadeInRight">
+				<input type="checkbox" name="finishedCheck" th:value="checked" th:field="${todoItemsForm.finishedCheck}" />終了した
+			</td>
+		</tr>
+		<!-- 作業更新ボタン -->
+		</table>
+		<button class="btn btn-primary animated  fadeIn" type="submit" name="updateOne">更新</button>
+		<!-- 戻るボタン type=buttonを指定しないと、submitにデフォルト設定される-->
+		<button type="button" class="btn btn-default pull-right btn btn-primary"><a href="/home">キャンセル</a></button>
+	</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

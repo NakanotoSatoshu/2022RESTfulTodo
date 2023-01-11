@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security	">
+<head>
+<meta content="true" name="HandheldFriendly">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS読込 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/Chaos.css}">
+<link rel="stylesheet" th:href="@{/css/nice.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/js/fetch.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<script th:src="@{/js/ajaxByJQuery.js}" defer></script>
+<script th:src="@{/js/modalwindow.js}" defer></script>
+<!-- Import App -->
+<script th:inline="javascript">
+    	//console.log(/*[[${color}]]*/); //red                                   //今後モーダルもVueで部品化せねばいけない
+    	//console.log(/*[[${todoList}]]*/); //red
+const todo = /*[[${todoList}]]*/
+//console.log(`${year}年${month}月${day}日`)
+// 2021年9月29日 と出力
+</script>
+<style>
+    /* 1秒間で透明度を制御する */
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 1s;
+    }
+    /* 表示する際は、透明度を 0 -> 1 へ */
+    .fade-enter {
+      opacity: 0;
+    }
+    .fade-enter-to {
+      opacity: 1;
+    }
+    /* 非表示にする際は、透明度を 1 -> 0 へ */
+    .fade-leave {
+      opacity: 1;
+    }
+    .fade-leave-to {
+      opacity: 0;
+    }
+</style>
+<title >Home</title>
+</head>
+
+<body class="bg-" style="background-image: url(">
+
+    <!-- ナビゲーション -->
+<header>
+	<div th:replace="header :: header_nav"></div>
+</header>
+    <!-- ナビゲーション ここまで -->
+    <!-- コンテナ-->
+<div class="container ">
+  <!----------------Vue------------------->
+  <main role="application" id="main">
+    <!-- モーダルフラグメント化  削除-->
+  <div th:replace="modal_delete :: modal_delete" ></div>
+  <!-- モーダルフラグメント化  更新-->
+  <div th:replace="modal_edit :: modal_edit" ></div>
+  <!--  <input v-model="name"><br>
+    <form @submit.prevent="updateOne">
+      <button type="submit">押してみる</button>
+    </form>
+  <button v-on:click="createNewUser">作成</button>
+  <ul>
+    <li v-for="user in users">{{ user.name }}</li>
+  </ul>-->
+     <todo-list :todo="todo" ></todo-list>
+	</main>
+<!--  <div th:replace="todolist :: todoList_contents" ></div>-->
+</div>
+
+    <!-- コンテナ ここまで -->
+
+    <!-- 必要なJavascriptを読み込む -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ <!--<script src="https://cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/vee-validate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>-->
+<script src="https://unpkg.com/dayjs"></script>
+<script src="https://unpkg.com/dayjs@1.7.7/locale/ja.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script th:src="@{/js/vue.js}" defer></script>
+<script type="module" th:src="@{/js/main.js}" defer></script>
+<script th:src="@{/js/VueCompoment.js}" defer></script>
+    <!-- Mount App -->
+<script type="module" >
+const mountedApp = app.mount('#main')
+</script>
+
+</body>
+</html>

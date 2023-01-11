@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS読込 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/Chaos.css}">
+<link rel="stylesheet" th:href="@{/css/nice.css}">
+<!-- JS読込 -->
+<meta charset="UTF-8">
+<title>modal delete</title>
+</head>
+<body>
+
+<!-- 今後これらタイムリーフをViteでコンポーネント化する-----------------------------------------------------
+                  :::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;                                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+<div th:fragment="modal_edit">
+ 			<!-- モーダルウィンドウ外側 -->
+			<div class="overlay" id="js-overlay"></div>
+			<!-- モーダルウィンドウ外側 -->
+			<!-- 更新モーダルウィンドウ -->
+			<div class="modal  animated  fadeIn" id="js-modal2">
+  				<div class="modal-close__wrap">
+    				<button class="modal-close" id="js-close2">
+      					<span></span>
+      					<span></span>
+    				</button>
+            <!--
+    		<div class="form-row align-items-center">
+				<form  class="form-inline" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+	 					<input class=" shadow-lg  p-3 mb-3 rounded" type="file" name="file"/>
+     					 <button class="btn btn-outline-dark shadow-lg btn-lg p-3 mb-3 rounded" type="submit" formenctype="multipart/form-data" formmethod="post" formaction="/upload">投稿</button>
+  				</form>
+ 			</div>
+    		<div class="align-items-center">
+                    <form @submit.prevent="updateOne">
+                        <input type="text" v-model="item_name2">
+                        <input type="text" v-model="user_id2">
+                        <button class="btn btn-primary" type="submit"  >登録</button>
+                    </form>
+                -->
+    <div class="align-items-center">
+			<form th:action="@{/edit}" method="post" @submit.prevent="updateOne"   th:object="${todoItemsForm}">
+<!--------------------------------------------------------------------------------- 項目名の入力エリア -->
+                        <div class="form-group" th:classappend="${#fields.hasErrors('item_name')}?'has-error'">
+                            <label for="item_name">項目名</label>
+                            <input type="hidden" class="form-control"  th:field="*{id}"/>
+                            <input type="text" class="form-control modalName2" v-model="item_name"  th:field="*{item_name}" th:errorclass="is-invalid" />
+                        <span class="text-danger" th:if="${#fields.hasErrors('item_name')}" th:errors="*{item_name}">item_name error</span>
+                        </div>
+<!--------------------------------------------------------------------------------- 担当者の入力エリア -->
+                         <div class="form-group" th:classappend="${#fields.hasErrors('user_id')}?'has-error'">
+                            <label for="user_id">担当者</label>
+                            <select class="form-control" th:field="*{user_id}"  th:errorclass="is-invalid">
+                            	<option   value="0" selected></option>
+                            	<option   value="1"></option>
+                                <option  th:each="UL:${usersList}" th:text="${UL.username}" th:value="${UL.id}" ></option>
+                            </select>
+                            <span class="text-danger" th:if="${#fields.hasErrors('user_id')}" th:errors="*{user_id}">userId error</span>
+                        </div>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('expire_date')}?'has-error'">
+                            <label for="expire_date">期限</label>
+                            <input type="date" class="form-control"	th:field="*{expire_date}" placeholder="1914/11/01" th:errorclass="is-invalid"/>
+                       <span class="text-danger" th:if="${#fields.hasErrors('expire_date')}" th:errors="*{expire_date}">expire_date error</span>
+                        </div>
+                          <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" th:field="*{finishedCheck}">
+                            <label for="finished">完了</label>
+                        </div>
+                        <button class="btn btn-primary" type="submit" name="updateOne">登録</button>
+                       <button type="button" class="btn btn-default pull-right"><a href="/home">キャンセル</a></button>
+                    </form>
+                   </div>
+                 </div>
+             </div>
+			<!-- 更新モーダルウィンドウ ここまで-->
+			<!-- モーダルウィンドウ ここまで -->
+</div>
+</body>
+</html>

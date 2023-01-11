@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="katachi.todo.repository.todoRepository">
+
+	<resultMap type="katachi.todo.domain.model.todoItemsModel"
+		id="todoMapping">
+		<id column="id" property="id" />
+		<result column="user_id" property="user_id" />
+		<result column="item_name" property="item_name" />
+		<result column="registration_date" property="registration_date" />
+		<result column="expire_date" property="expire_date" />
+		<result column="finished_date" property="finished_date" />
+		<result column="is_deleted" property="is_deleted" />
+		<result column="create_date_time" property="create_date_time" />
+		<result column="update_date_time" property="update_date_time" />
+		<result column="priority" property="priority" />
+		<association property="user" resultMap="Users"/>
+	</resultMap>
+	<resultMap type="katachi.todo.domain.model.UsersModel" id="Users">
+		<id column="uid" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="family_name" property="family_name" />
+		<result column="first_name" property="first_name" />
+		<result column="is_admin" property="is_admin" />
+		<result column="is_deleted" property="is_deleted" />
+		<result column="create_date_time" property="create_date_time" />
+		<result column="update_date_time" property="update_date_time" />
+	</resultMap>
+
+	<select id="getFullName2" resultMap="todoMapping">
+		SELECT family_name ,first_name FROM todo.users join todo_items on todo_items.user_id as uid = users.id ORDER BY todo_items.expire_date desc;
+	</select>
+
+	<select id="selectMany" resultMap="todoMapping">
+		select t.*, u.id as uid, u.* from todo_items as t join users as u on t.user_id = u.id ORDER BY t.expire_date asc;
+	</select>
+
+	<select id="selectOne" resultMap="todoMapping">
+		SELECT * FROM todo_items WHERE id = #{id};
+	</select>
+
+	<select id="selectOne2" resultMap="todoMapping">
+		SELECT * FROM todo_items WHERE id = #{id};
+	</select>
+
+	<select id="find" resultMap="todoMapping" >
+	SELECT t.*, u.id as uid, u.*
+FROM todo.todo_items as t INNER JOIN todo.users as u
+ON t.user_id = u.id WHERE t.item_name like '%'  #{param} '%'
+OR u.family_name  like '%'  #{param} '%'
+or u.first_name like '%'  #{param} '%';
+	</select>
+
+	<insert id="entryTheOne">
+		INSERT INTO `todo_items`
+		(
+		`user_id`,`item_name`,`registration_date`,`expire_date`
+		)
+		VALUES (#{user_id},#{item_name},#{registration_date},#{expire_date}
+		);
+	</insert>
+
+	<update id="updateOne">
+	UPDATE `todo_items`
+	SET
+		`user_id` = #{user_id},
+	 `item_name` = #{item_name},
+	  `expire_date` = #{expire_date}
+	    WHERE
+	    (`id` = #{id});
+	</update>
+
+	<update id="updateFinishedDate">
+	UPDATE todo_items SET finished_date=#{finished_date}, update_date_time=#{update_date_time} WHERE id= #{id};
+	</update>
+
+	<delete id="deleteOne">
+	UPDATE todo_items SET is_deleted=1, update_date_time=#{update_date_time} WHERE id=#{id};
+	</delete>
+
+</mapper>

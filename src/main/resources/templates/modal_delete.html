@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS読込 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/Chaos.css}">
+<link rel="stylesheet" th:href="@{/css/nice.css}">
+<!-- JS読込 -->
+<meta charset="UTF-8">
+<title>modal delete</title>
+</head>
+<body>
+<div th:fragment="modal_delete">
+ <!-- モーダルウィンドウ外側 -->
+			<div class="overlay" id="js-overlay"></div>
+			<!-- モーダルウィンドウ外側 -->
+			<!-- モーダルウィンドウ -->
+			<div class="modal  animated  fadeIn" id="js-modal">
+  				<div class="modal-close__wrap">
+    				<button class="modal-close" id="js-close">
+      					<span></span>
+      					<span></span>
+    				</button>
+  				</div>
+  				<br/><br/>
+  					<div class="text-center">
+  						<h1 id="modalName" class=""></h1>
+  						<br/><br/>
+  						<h2 class="text-center animated  fadeIn" > を削除します。よろしいですか？</h2>
+  					</div>
+								<div class="text-center">
+  								 	<button id="btn-delete" class="btn btn-outline-danger" href=""  type="button">削除</button>
+									<button type="button" class="btn btn-outline-dark" onclick="history.back();">戻る</button>
+
+								</div>
+								<img src="https://www.mcd-holdings.co.jp/news/2011/promotion/img/1111a_2.jpg">
+								<img src="https://www.mcd-holdings.co.jp/news/2007/promotion/img/img1003.jpg">
+			</div>
+</div>
+</body>
+</html>

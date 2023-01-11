@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="katachi.todo.repository.UsersRepository">
+
+	<resultMap	type="katachi.todo.domain.model.UsersModel" id="Users">
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="family_name" property="family_name" />
+		<result column="first_name" property="first_name" />
+		<result column="is_admin" property="is_admin" />
+		<result column="is_deleted" property="is_deleted" />
+		<result column="create_date_time" property="create_date_time" />
+		<result column="update_date_time" property="update_date_time" />
+	</resultMap>
+
+	<resultMap type="katachi.todo.domain.model.FullNameModel" id="fullName">
+		<result column="family_name" property="family_name" />
+		<result column="first_name" property="first_name" />
+	</resultMap>
+
+	<select id="getLoginUser" resultMap="Users">
+	SELECT * FROM users WHERE username = #{username} ;
+	</select>
+
+	<select id="getFullName" resultMap="fullName">
+		SELECT family_name ,first_name FROM todo.users join todo_items on todo_items.user_id = users.id ORDER BY todo_items.expire_date desc;
+	</select>
+
+	<select id="getOneUser" resultMap="Users">
+	SELECT * FROM users WHERE id = #{id} ;
+	</select>
+
+	<select id="getUserList" resultMap="Users">
+	SELECT * FROM users;
+	</select>
+
+	<select id="getNowLogin" resultMap="Users">
+	SELECT users.username as loginuser FROM users
+	join todo_items
+	on users.id = todo_items.user_id
+    where todo_items.id = 1 ;
+	</select>
+
+	<select id="findUser" resultMap="Users">
+	SELECT * FROM users WHERE username LIKE '%' || #{str} || '%' ;
+	</select>
+
+</mapper>

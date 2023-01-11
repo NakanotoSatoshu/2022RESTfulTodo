@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<!-- CSS読込 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" />
+<link rel="stylesheet" th:href="@{/css/Chaos.css}">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/nice.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<script th:src="@{/js/js.js}" defer></script>
+<meta charset="UTF-8">
+<title >削除確認</title>
+</head>
+<body class="bg-danger" style="background-image: url(">
+<div th:fragment="delete_contents">
+<div class="container " >
+		<div class="row my-2">
+	<div class="col  animated  fadeIn">
+			<div class="page-header　 animated  fadeIn">
+				<h1 class="dekai">削除確認</h1>
+			</div>
+	<form method="post" th:action="@{/delete}" th:object="${todoList}">
+			<div class="form-group">
+				<tr th:each="ko : ${todoList}" class="">
+					<td class="align-middle" th:text="${ko.id}"></td>
+		 			<td class="align-middle" th:text="${ko.user_id}"></td>
+					<td class="align-middle" th:text="${ko.item_name}"></td>
+		 		    <td class="align-middle" th:text="${ko.expire_date}"></td>
+		 		</tr>
+					<input type="hidden" class="form-control" th:field="*{id}"/>
+		</div>
+			<h2 class="text-center animated  fadeIn">を削除します。よろしいですか？</h2>
+	<div class="text-center animated  fadeIn">
+			<button class="btn btn-primary" type="submit">削除</button>
+			<button type="button" class="btn btn-default" onclick="history.back();">戻る</button>
+	</div>
+		</form>
+</div>
+</div>
+</div>
+</body>
+</html>

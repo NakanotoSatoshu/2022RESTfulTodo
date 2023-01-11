@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<!--  layout:decorate="~{input}">-->
+<head>
+<!--  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />  -->
+<link rel="stylesheet" th:href="@{/css/Chaos.css}">
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<meta charset="UTF-8">
+</head>
+<body>
+	<footer  layout:fragment="footer" class="footer mt-1 py-1 fixed-bottom bg-dark animated  fadeIn	fixed-bottom">
+			<div class="container text-white ">
+					<div class="float-left">
+					 <div class="navbar-brand">
+								<h3>どこつぶOnSpringへようこそ</h3>
+					 </div>
+						<form class="" th:action="@{/footer}" method="post">
+								<div class="form-group-sm">
+								<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} !=null"
+								th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+								class="text-danger">
+								</p>
+									<label th:text="#{userId}"></label>
+									<input type="text" class="form-control-sm" name="name">
+									<label th:text="#{userId}"></label>
+									<input type="password"  class="form-control-sm" name="pass">
+								</div>
+									 <input type="submit" class="btn btn-dark" value="ログイン">
+							</form>
+
+							</div>
+					</div>
+			<nav class="navbar navbar-expand-sm  bg-">
+				<a class="" href="/" title="Home"><button type="button" class="btn btn-info">Home</button></a>
+				<a class="" href="/user" title="Home"><button type="button" class="btn btn-info">ユーザー一覧</button></a>
+				<a class="" href="/user/add" title="Home"><button type="button" class="btn btn-info">ユーザー新規追加</button></a>
+			</nav>
+			<div class="float-right font-weight-bold">
+				<a class="" href="https://miraino-katachi.co.jp/" title="">
+				<button type="button" class="btn btn-light btn-lg btn-block"><h2>就労移行支援事業所 未来のかたち</h2></button></a>
+			</div>
+	</footer>
+</body>
+</html>
