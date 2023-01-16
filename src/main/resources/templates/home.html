@@ -64,10 +64,10 @@ const todo = /*[[${todoList}]]*/
 <div class="container ">
   <!----------------Vue------------------->
   <main role="application" id="main">
-    <!-- モーダルフラグメント化  削除
+    <!-- モーダルフラグメント化  削除-->
   <div th:replace="modal_delete :: modal_delete" ></div>
-  <!-- モーダルフラグメント化  更新
-  <div th:replace="modal_edit :: modal_edit" ></div>-->
+  <!-- モーダルフラグメント化  更新-->
+     <modal-edit /></modal-edit>
      <todo-list :todo="todo" ></todo-list>
 	</main>
 <!--  <div th:replace="todolist :: todoList_contents" ></div>-->

@@ -1,6 +1,5 @@
 app.component('todo-list', {
 	 props: {todo:{	type:Array },
-	 		//message:{type:String}
 		   },
      modelValue:{},
      template: `Vue
