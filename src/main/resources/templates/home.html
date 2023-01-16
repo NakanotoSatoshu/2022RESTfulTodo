@@ -64,18 +64,10 @@ const todo = /*[[${todoList}]]*/
 <div class="container ">
   <!----------------Vue------------------->
   <main role="application" id="main">
-    <!-- モーダルフラグメント化  削除-->
+    <!-- モーダルフラグメント化  削除
   <div th:replace="modal_delete :: modal_delete" ></div>
-  <!-- モーダルフラグメント化  更新-->
-  <div th:replace="modal_edit :: modal_edit" ></div>
-  <!--  <input v-model="name"><br>
-    <form @submit.prevent="updateOne">
-      <button type="submit">押してみる</button>
-    </form>
-  <button v-on:click="createNewUser">作成</button>
-  <ul>
-    <li v-for="user in users">{{ user.name }}</li>
-  </ul>-->
+  <!-- モーダルフラグメント化  更新
+  <div th:replace="modal_edit :: modal_edit" ></div>-->
      <todo-list :todo="todo" ></todo-list>
 	</main>
 <!--  <div th:replace="todolist :: todoList_contents" ></div>-->
@@ -90,9 +82,9 @@ const todo = /*[[${todoList}]]*/
 <script src="https://unpkg.com/dayjs"></script>
 <script src="https://unpkg.com/dayjs@1.7.7/locale/ja.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script th:src="@{/js/vue.js}" defer></script>
-<script type="module" th:src="@{/js/main.js}" defer></script>
-<script th:src="@{/js/VueCompoment.js}" defer></script>
+<script th:src="@{/js/main.js}" defer></script>
+<script type="module" th:src="@{/js/main2.js}" defer></script>
+<script th:src="@{/js/VieWTodo.js}" defer></script>
     <!-- Mount App -->
 <script type="module" >
 const mountedApp = app.mount('#main')
