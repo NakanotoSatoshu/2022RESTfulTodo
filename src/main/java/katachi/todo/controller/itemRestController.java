@@ -1,12 +1,14 @@
 package katachi.todo.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,16 +16,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import katachi.todo.domain.model.deleteModel;
+import katachi.todo.domain.model.todoItemsModel;
 import katachi.todo.domain.service.todoLogic;
 import katachi.todo.domain.service.usersLogic;
 import katachi.todo.form.GroupOrder;
 import katachi.todo.form.todoItemsForm;
+import katachi.todo.repository.todoRepository;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-//@Slf4j
-//@RequestMapping("/home")
+@RequiredArgsConstructor
+@RequestMapping("/home")
 public class itemRestController {
-
+	
+	private final todoRepository todoRepo;
+	
 	@Autowired
 	usersLogic userLogic;
 
@@ -32,6 +39,13 @@ public class itemRestController {
 
 	@Autowired
 	ModelMapper mDMP;
+	
+	/** TODOを取得 */
+	@GetMapping
+	List<todoItemsModel>selectMany(){
+		System.out.println("OK!!!");
+		return todoRepo.selectMany();
+	}
 
 	/** ユーザー削除画面モーダルウィンドウ */
 	//@GetMapping("/delete/{id}")

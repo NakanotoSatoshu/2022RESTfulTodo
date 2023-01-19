@@ -121,23 +121,23 @@ public class ItmeController {
 //	}
 
 	//@ResponseBody
-	@GetMapping("/home")
-	public String getHome(@ModelAttribute UsersModel UM, todoItemsForm tDIF, Model model,@AuthenticationPrincipal UserDetails username) {
-
-		//画像パスを取得
-
-		//ユーザ情報を取得
-		UsersModel loginUser = userLogic.getLoginUser(username);
-		model.addAttribute("loginUser", loginUser);
-
-		//メインTODOLISTの表示リスト獲得
-		List<todoItemsModel> todoList = todoLogic.selectMany();
-
-		model.addAttribute("todoList", todoList);
-		model.addAttribute("fileName",filename);
-
-		return "home";
-	}
+//	@GetMapping("/home")
+//	public String getHome(@ModelAttribute UsersModel UM, todoItemsForm tDIF, Model model,@AuthenticationPrincipal UserDetails username) {
+//
+//		//画像パスを取得
+//
+//		//ユーザ情報を取得
+//		UsersModel loginUser = userLogic.getLoginUser(username);
+//		model.addAttribute("loginUser", loginUser);
+//
+//		//メインTODOLISTの表示リスト獲得
+//		List<todoItemsModel> todoList = todoLogic.selectMany();
+//
+//		model.addAttribute("todoList", todoList);
+//		model.addAttribute("fileName",filename);
+//
+//		return "home";
+//	}
 
 //	@GetMapping("/todoList")
 //	public String getTodoList(Model model) {
