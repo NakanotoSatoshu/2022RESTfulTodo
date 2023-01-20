@@ -1,5 +1,4 @@
 app.component('modal-edit', {  
-	props: {   },
 	template: `
 	<!-- モーダルウィンドウ外側 -->
 	<div class="overlay" id="js-overlay"></div>
@@ -13,7 +12,7 @@ app.component('modal-edit', {
 				</button>
 				
 				<div class="align-items-center">
-				<form  method="post" @submit.prevent="updateOne" >
+				<form  method="post"  >
 			<!--------------------------------------------------------------------------------- 項目名の入力エリア -->
 							<div class="form-group">
 								<label for="item_name">項目名</label>
@@ -51,11 +50,11 @@ app.component('modal-edit', {
 				` ,
  data(){
 	return{
-		finished_date:'',
-					expire_date:'',
-					user_id: '',
-					item_name:'gest',
-	}
+			finished_date:'',
+			expire_date:'',
+			user_id: '',
+			item_name:'gest',
+		  }
 	}
  
 

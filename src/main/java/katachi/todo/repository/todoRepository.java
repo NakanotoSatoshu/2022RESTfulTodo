@@ -5,18 +5,19 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.data.repository.CrudRepository;
 
 import katachi.todo.domain.model.UsersModel;
 import katachi.todo.domain.model.todoItemsModel;
 import katachi.todo.form.todoItemsForm;
 
 @Mapper
-public interface todoRepository {
+public interface todoRepository extends CrudRepository<todoItemsModel, Long>{
 
 	public todoItemsModel selectOne(String itemId);
 	public int selectOne2(int id);
 	public UsersModel getFullName2();
-	public List<todoItemsModel>selectMany();
+    List<todoItemsModel>selectMany();
 	public void entryTheOne(todoItemsModel todoForMaped);
 	public void updateOne(
 			@Param("id")int id,

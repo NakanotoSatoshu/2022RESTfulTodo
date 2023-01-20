@@ -24,11 +24,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security	">
 <script th:src="@{/js/modalwindow.js}" defer></script>
 <!-- Import App -->
 <script th:inline="javascript">
-    	//console.log(/*[[${color}]]*/); //red                                   //今後モーダルもVueで部品化せねばいけない
-    	//console.log(/*[[${todoList}]]*/); //red
+//今後モーダルもVueで部品化せねばいけない 	
 const todo = /*[[${todoList}]]*/
-//console.log(`${year}年${month}月${day}日`)
-// 2021年9月29日 と出力
+
 </script>
 <style>
     /* 1秒間で透明度を制御する */
@@ -67,7 +65,7 @@ const todo = /*[[${todoList}]]*/
     <!-- モーダルフラグメント化  削除-->
   <div th:replace="modal_delete :: modal_delete" ></div>
   <!-- モーダルフラグメント化  更新-->
-     <modal-edit /></modal-edit>
+     <modal-edit ></modal-edit>
      <todo-list :todo="todo" ></todo-list>
 	</main>
 <!--  <div th:replace="todolist :: todoList_contents" ></div>-->
@@ -83,7 +81,7 @@ const todo = /*[[${todoList}]]*/
 <script src="https://unpkg.com/dayjs@1.7.7/locale/ja.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script th:src="@{/js/main.js}" defer></script>
-<script type="module" th:src="@{/js/main2.js}" defer></script>
+<script type="module" th:src="@{/js/ViewModalEdit.js}" defer></script>
 <script th:src="@{/js/VieWTodo.js}" defer></script>
     <!-- Mount App -->
 <script type="module" >
