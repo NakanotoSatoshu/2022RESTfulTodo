@@ -9,8 +9,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         // viteとの開発用に、3000からのアクセスを許可する。
-        registry.addMapping("/**")
+        registry.addMapping("/api/**")
                 .allowedMethods("*")
-                .allowedOrigins("http://127.0.0.1:5173/");
+                .allowedOrigins("http://localhost:3000");
     }
 }

@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/home")
+@RequestMapping("/api/todo")
 public class itemRestController {
 	
 	private final todoRepository todoRepo;
@@ -43,7 +43,7 @@ public class itemRestController {
 	/** TODOを取得 */
 	@GetMapping
 	List<todoItemsModel>selectMany(){
-		System.out.println("OK!!!");
+		System.out.println("CROS通信OK!!!");
 		return todoRepo.selectMany();
 	}
 
