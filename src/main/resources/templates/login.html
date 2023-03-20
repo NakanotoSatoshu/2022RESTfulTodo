@@ -22,7 +22,7 @@
 </head>
 <body class="bg-light " style="background-image: url(">
 <header data-box-size="lg"  class="bg-white flex flex-wrap justify-between relative px-8:lg pt-3:lg px-0:lg-1px mx-auto">
-    <nav class="navbar navbar-expand-md navbar-dark bg-light animated  fadeInLeft ">
+    <nav class="navbar navbar-expand-md navbar-dark bg-light animated">
         <span class="fixed-top navbar-brand 3d text-dark shadow-lg p-1 mb-1 bg-white rounded relative px-8:lg pt-3:lg px-0:lg-1px mx-auto ">TODOリスト</span>
     </nav>
 </header>
@@ -48,19 +48,19 @@
 										</p>
       <div class="row my-2 p-1">
             <div class="col-md-5">
-           			 <h1 class="text-danger 3d shadow-sm p-1 mb-1 rounded">世界で最も愛されている<br/>TODOリスト「かたち」</h1></div>
+           			 <h1 class="text-danger 3d shadow-sm p-1 mb-1 rounded"><br/></h1></div>
             <div class="col">
              <!----------------スイッチVue------------------->
              <div id="app">
-    <button class="shadow-lg p-1 mb-1 rounded  align-middle btn-outline-warning" v-on:click="toggleBtn">Vue起動</button>
+    <button class="shadow-lg p-1 mb-1 rounded  align-middle btn-outline-warning" v-on:click="toggleBtn"></button>
     </div></div>
             <div class="col-md-4 shadow-sm p-3 mb-27  rounded">
                 <form class="form-control-lg" th:action="@{/login}" method="post">
-                    <div class="form-group animated  fadeInRight">
+                    <div class="form-group animated  fadeIn">
                         <label  class="sr-only">ユーザーID</label>
 										<input type="text" class="form-control" placeholder="ユーザーID" name="username">
                     </div>
-                    <div class="form-group animated  fadeInLeft">
+                    <div class="form-group animated  fadeIn">
                         <label 	 class="sr-only">パスワード</label>
 										<input type="password"  class="form-control"  placeholder="パスワード" name="password">
                     </div>
@@ -71,96 +71,7 @@
        </div>
 
     </div>
-    <ul class=""></ul>
-  <div data-container-fullwidth="true" data-container-bg="false" class="container-instance mx-auto">
-    <div class="container-instance-bg">
-		<div data-box-size="lg" class="container-container overflow-visible">
-<!-- Slider main container -->
-			<div class="swiper swiper-initialized swiper-container container-gallery-slider-swiper overflow-visible swiper-container-initialized swiper-container-horizontal">
-  <!-- Additional required wrapper -->
- 				 <div class="swiper-wrapper">
-    <!-- Slides -->
-   				 <div class="swiper-slide">
-    				 <div class="flex flex-col width-100">
-    						<picture class="flex-shrink-0 text-center">
-							<source srcset="//www.mcdonalds.co.jp/media_library/5009/file.original.jpg?20221026050942" media="(max-width: 768px)">
-							<img src="//www.mcdonalds.co.jp/media_library/5010/file.original.jpg?20221026050942" alt="これまで、ずっと、これからも、もっと。安全・安心の取り組みを。">
-     				 </picture>
-    			  </div>
-   			 </div>
-    <div class="swiper-slide">
-    	 <div class="flex flex-col width-100">
-			<picture class="flex-shrink-0 text-center">
-			 <source srcset="//www.mcdonalds.co.jp/media_library/16874/file.original.jpg?20221026050942" media="(max-width: 768px)">
-          <img src="//www.mcdonalds.co.jp/media_library/16873/file.original.jpg?20221026050942" alt="今年も「三角チョコパイ」の季節！定番の「黒」と新商品「白の王様」が10/12(水)から期間限定で登場！">
-	    </picture>
-	    </div>
-    </div>
-    <div class="swiper-slide">
-     <div class="flex flex-col width-100">
-    	<picture class="flex-shrink-0 text-center">
-			<source srcset="//www.mcdonalds.co.jp/media_library/17031/file.original.jpg?20221026050942" media="(max-width: 768px)">
-			<img src="//www.mcdonalds.co.jp/media_library/17030/file.original.jpg?20221026050942" alt="「マックTHEチキン ガーリックペッパーの一撃(2ピース入り)」が10/19(水)から期間限定で新登場！">
-		</picture>
-		</div>
-    </div>
-    <div class="swiper-slide">
-      <div class="flex flex-col width-100">
- 	 <picture class="flex-shrink-0 text-center">
-		<source srcset="//www.mcdonalds.co.jp/media_library/17373/file.original.jpg?20221026050942" media="(max-width: 768px)">
-		<img src="//www.mcdonalds.co.jp/media_library/17372/file.original.jpg?20221026050942" alt="歴代のFIFAワールドカップ™大会をイメージした3種類のバーガーが期間限定で10/26(水)から新登場！">
-		</picture>
-		</div>
-    </div>
-     <div class="swiper-slide">
-        <div class="flex flex-col width-100">
-			<picture class="flex-shrink-0 text-center">
-				<source srcset="//www.mcdonalds.co.jp/media_library/17095/file.original.jpg?20221102050912" media="(max-width: 768px)">
-					<img src="//www.mcdonalds.co.jp/media_library/17094/file.original.jpg?20221102050912" alt="遂に登場「ごはんかるび」！2つの新商品で「ごはんバーガー」が期間限定で11/2(水)から登場！">
-				</picture>
-		</div>
-      </div>
-  	</div>
-  </div>
-  <!-- If we need pagination -->
- <div class="swiper-pagination mx-auto relative mt-4 mt-6:lg flex justify-center swiper-pagination-clickable swiper-pagination-bullets">
- <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
- <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
- <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span>
- <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span>
- <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 5"></span>
- </div>
-  <!-- If we need navigation buttons -->
-  <div   class="swiper-button-prev"></div>
-  <div  class="swiper-button-next"></div>
 
-  <!-- If we need scrollbar -->
-  <div class="swiper-scrollbar"></div>
-</div>
-</div>
-</div>
-<div id="basictext-9421f688e91545a083b2698e24e25b4a" data-box-size="lg" data-container-margin="false" data-container-bg="false" data-container-id="ベーシックテキスト-20221101132113549380-2" class="container-instance mx-auto container-text text-black">
-<div class="container-instance-bg">
-<div data-box-size="lg" class="container-container rich-text-with-m-0"><h2 class="h-m" style="color:#be1c10">特別なお知らせ</h2></div>
-</div>
-</div>
-<div id="buttons-38684b538d944a99902a967f0ea9dc11" data-container-fullwidth="true" data-container-bg="false" data-container-id="ボタン-20221101132113549388-5" class="container-instance mx-auto">
-<div class="container-instance-bg">
-<div>
-<div data-box-size="lg" class="container-container">
-<div class="container-buttons grid my-0 container-buttons-normal grid-col-2">
-<div class="container-buttons-item container-buttons-item-one-col mb-0 grid-item relative">
-<a target="_blank" href="/company/news/200304a/" class="button rounded-lg justify-between bg-white shadow overflow-hidden flex grid-item-inner flex-grow p-4" style="background-color:#be1c10 !important;">
-<span class="block whitespace-normal width-100 text-white">新型コロナウイルス感染拡大防止の取り組みとお知らせ</span>
-
-<i data-position="right" data-size="sm" data-color="white" class="arrow-button"></i>
-</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <!--
 <div layout:replace="~{footer::footer}"></div>-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

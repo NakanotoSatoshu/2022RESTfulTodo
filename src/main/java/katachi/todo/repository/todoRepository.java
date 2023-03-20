@@ -18,13 +18,15 @@ public interface todoRepository extends CrudRepository<todoItemsModel, Long>{
 	public int selectOne2(int id);
 	public UsersModel getFullName2();
     List<todoItemsModel>selectMany();
-	public void entryTheOne(todoItemsModel todoForMaped);
+	public void entryTheOne(int user_id,String item_name,Date registration_date,Date expire_date);
 	public void updateOne(
 			@Param("id")int id,
 			@Param("user_id")int user_id,
 			@Param("item_name")String item_name,
 			@Param("expire_date")Date expire_date);
-	public void deleteOne(todoItemsForm todoItem);
-	public int updateFinishedDate(todoItemsForm todoItem);
-	public List<todoItemsModel> find(String param);
+	public void deleteOne1(todoItemsForm todoItem);
+    int  deleteOne(todoItemsForm todoItem);
+	int updateFinishedDate(todoItemsForm todoItem);
+	public todoItemsModel find(String param);
+	public todoItemsForm save(todoItemsForm todoItem);
 }

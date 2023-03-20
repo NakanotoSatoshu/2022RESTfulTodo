@@ -8,33 +8,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import katachi.todo.domain.model.UsersModel;
-import katachi.todo.domain.model.todoItemsModel;
 import katachi.todo.domain.service.todoLogic;
 import katachi.todo.domain.service.usersLogic;
-import katachi.todo.form.GroupOrder;
-import katachi.todo.form.todoItemsForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -153,38 +139,38 @@ public class ItmeController {
 //		return "login/home";
 //	}
 
-	@GetMapping("/entry")
-	public String getEntry(@ModelAttribute todoItemsForm FTDI, Model model) {
-		//コンテンツ部分にユーザ一覧を表示するための文字列を登録
-		model.addAttribute("contents", "login/entry :: entry_contents");
-
-		//ユーザ一覧の生成
-		List<UsersModel> usersList = userLogic.getUserList();
-		log.info(usersList.toString());
-
-		model.addAttribute("usersList", usersList);
-
-		return "entry";
-	}
-
-	@PostMapping("/entry")
-	public String entryTheOne(@ModelAttribute @Validated(GroupOrder.class) todoItemsForm tDIF, BindingResult bindingResult, Model model) {
-
-		if (bindingResult.hasErrors()) {
-			return getEntry(tDIF, model);
-		}
-
-		todoItemsModel todoForMaped = mDMP.map(tDIF, todoItemsModel.class);
-
-		Date d = new Date();
-		todoForMaped.setRegistration_date(d);
-
-		log.info(todoForMaped.toString());
-
-		todoLogic.entryTheOne(todoForMaped);
-
-		return "redirect:/home";
-	}
+//	@GetMapping("/entry")
+//	public String getEntry(@ModelAttribute todoItemsForm FTDI, Model model) {
+//		//コンテンツ部分にユーザ一覧を表示するための文字列を登録
+//		model.addAttribute("contents", "login/entry :: entry_contents");
+//
+//		//ユーザ一覧の生成
+//		List<UsersModel> usersList = userLogic.getUserList();
+//		log.info(usersList.toString());
+//
+//		model.addAttribute("usersList", usersList);
+//
+//		return "entry";
+//	}
+//
+//	@PostMapping("/entry")
+//	public String entryTheOne(@ModelAttribute @Validated(GroupOrder.class) todoItemsForm tDIF, BindingResult bindingResult, Model model) {
+//
+//		if (bindingResult.hasErrors()) {
+//			return getEntry(tDIF, model);
+//		}
+//
+//		todoItemsModel todoForMaped = mDMP.map(tDIF, todoItemsModel.class);
+//
+//		Date d = new Date();
+//		todoForMaped.setRegistration_date(d);
+//
+//		log.info(todoForMaped.toString());
+//
+//		todoLogic.entryTheOne(todoForMaped);
+//
+//		return "redirect:/home";
+//	}
 
 //	@GetMapping("/edit/{id}")
 //	public String getEdit(@ModelAttribute todoItemsForm tDIF, Model model, @PathVariable("id") String itemId) {
@@ -363,29 +349,29 @@ public class ItmeController {
 //		return "redirect:/home";
 //	}
 
-	@PostMapping("/search")
-	public String search(@ModelAttribute todoItemsForm tDIF, HttpServletRequest request,  Model model,RedirectAttributes redirectAttributes,@AuthenticationPrincipal UserDetails username) {
-
-
-		//コンテンツ部分に作業一覧を表示するための文字列を登録
-		model.addAttribute("contents", "login/searchTodoList :: searchTodoList_contents");
-
-		//ユーザ情報を取得
-		UsersModel loginUser = userLogic.getLoginUser(username);
-		model.addAttribute("loginUser", loginUser);
-
-        String param = request.getParameter("str");
-
-        if(param == null) {
-        	return "redirect:/home";
-        }else {
-        	model.addAttribute("value", param);
-        	List<todoItemsModel> list = todoLogic.find(param);
-        	model.addAttribute("todoList", list);
-        	//redirectAttributes.addFlashAttribute(list);
-        }
-        return  "home";
-    }
+//	@PostMapping("/search")
+//	public String search(@ModelAttribute todoItemsForm tDIF, HttpServletRequest request,  Model model,RedirectAttributes redirectAttributes,@AuthenticationPrincipal UserDetails username) {
+//
+//
+//		//コンテンツ部分に作業一覧を表示するための文字列を登録
+//		model.addAttribute("contents", "login/searchTodoList :: searchTodoList_contents");
+//
+//		//ユーザ情報を取得
+//		UsersModel loginUser = userLogic.getLoginUser(username);
+//		model.addAttribute("loginUser", loginUser);
+//
+//        String param = request.getParameter("str");
+//
+//        if(param == null) {
+//        	return "redirect:/home";10_
+//        }else {
+//        	model.addAttribute("value", param);
+//        	List<todoItemsModel> list = todoLogic.find(param);
+//        	model.addAttribute("todoList", list);
+//        	//redirectAttributes.addFlashAttribute(list);
+//        }
+//        return  "home";
+//    }
 
 
 }

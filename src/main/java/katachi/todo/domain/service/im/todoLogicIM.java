@@ -19,24 +19,18 @@ public class todoLogicIM implements todoLogic {
 	public todoRepository todoRepo;
 
 	@Override
-	public List<todoItemsModel>selectMany(){
-		return todoRepo.selectMany();
-	}
+	public List<todoItemsModel>selectMany(){return todoRepo.selectMany();}
 
 	@Override
-	public todoItemsModel selectOne(String itemId) {
-		return todoRepo.selectOne(itemId);
-	}
+	public todoItemsModel selectOne(String itemId) {return todoRepo.selectOne(itemId)	;}
+
+//	@Override
+	//public void entryTheOne(todoItemsModel todoForMaped) {	todoRepo.entryTheOne(todoForMaped);}
 
 	@Override
-	public void entryTheOne(todoItemsModel todoForMaped) {
-		todoRepo.entryTheOne(todoForMaped);
-	}
-
-	@Override
-	public void updateOne(int id, int user_id,String item_name, Date expire_date) {
+	public todoItemsModel updateOne(int id, int user_id,String item_name, Date expire_date) {
 		todoRepo.updateOne(id,user_id,item_name, expire_date);
-
+		return null;
 	}
 
 	@Override
@@ -59,23 +53,21 @@ public class todoLogicIM implements todoLogic {
 	}
 
 	@Override
-	public List<todoItemsModel> find(String param) {
-		return todoRepo.find(param);
-	}
-
+	public todoItemsModel find(String param) {
+		return todoRepo.find(param);}
 	@Override
 	public int selectOne2(int id) {
-		return todoRepo.selectOne2(id);
-	}
-
+		return todoRepo.selectOne2(id);}
 	@Override
-	public UsersModel getFullName2(){
-		// TODO 自動生成されたメソッド・スタブ
-		return todoRepo.getFullName2();
+	public UsersModel getFullName2(){return todoRepo.getFullName2();}
+	@Override
+	public todoItemsModel toString(todoItemsForm tDIF) {return null;}
+	@Override
+	public todoItemsModel toString(todoItemsModel todo) {return null;	}
+	@Override
+	public todoItemsModel entryTheOne(int user_id, String item_name, Date registration_date, Date expire_date) {
+		 todoRepo.entryTheOne(user_id, item_name, registration_date, expire_date);
+			return null;
 	}
-
-
-
-
 
 }
