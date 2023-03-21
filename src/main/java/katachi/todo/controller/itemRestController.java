@@ -107,41 +107,6 @@ public class itemRestController {
 		return todoLogic.updateOne(tDIF.getId(),tDIF.getUser_id(),tDIF.getItem_name(),tDIF.getExpire_date());
 	}
 	
-
-	// @PostMapping( value="/edit" , params = "updateOne" )
-//	@RequestMapping(
-//			path = "/edit",
-//			method = RequestMethod.POST)
-//	public String editOne(@RequestBody  @Validated(GroupOrder.class)
-//			todoItemsForm tDIF,
-//			BindingResult bindingResult,
-//			Model model) {
-//		System.out.println("更新ボタンの処理");
-
-	// 入力チェックに引っかかった場合、作業登録画面に戻る
-	// if(bindingResult.hasErrors()) {
-	// GETリクエスト用のメソッドを呼び出して、作業更新画面に戻ります
-	// return getEdit(tDIF, model, Integer.toString(tDIF.getId()));
-	// }
-
-//		try {
-//		log.info(tDIF.toString());
-//	} catch (Exception e) {
-//		      log.error("ユーザー更新でエラー", e);
-//	}
-//
-//	    todoLogic.updateOne(
-//	    		tDIF.getId(),
-//	    		tDIF.getUser_id(),
-//	    		tDIF.getItem_name(),
-//	    		tDIF.getExpire_date());
-//
-//
-//	    System.out.println(tDIF);
-//	    System.out.println("DB　コネクションok");
-//		return  "0";
-//	}
-
 	/** ユーザーを削除 */
 	@PostMapping("/delete/{id}")
 	int tDelete(@RequestBody @PathVariable("id") int id) {
